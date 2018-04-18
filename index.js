@@ -38,8 +38,12 @@ class Customer {
 class Meal {
   constructor(title, price) {
     this.id = ++mealIds;
-    this.title = title;
-    this.price = price;
+    if (title !== undefined) {
+      this.title = title;
+    }
+    if (price !== undefined) {
+      this.price = price;
+    }
     store.meals.push(this);
   }
 
