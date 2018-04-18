@@ -24,7 +24,7 @@ class Customer {
 
   meals() {
     let meals = [];
-    let mealIdArray = store.deliveries.filter((delivery) => delivery.customerId === this.id).map((customerDelivery) => customerDelivery.mealId);
+    let mealIdArray = deliveries.map((customerDelivery) => customerDelivery.mealId);
     mealIdArray.forEach((id) => {
       meals.push(store.meals.find((meal) => meal.id === id))
     });
@@ -32,7 +32,7 @@ class Customer {
   }
 
   deliveries() {
-
+    return store.deliveries.filter((delivery) => delivery.customerId === this.id)
   }
 
   totalSpent() {
