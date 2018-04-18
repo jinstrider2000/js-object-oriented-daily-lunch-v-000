@@ -26,17 +26,21 @@ class Customer {
     let meals = [];
     let mealIdArray = this.deliveries().map((customerDelivery) => customerDelivery.mealId);
     mealIdArray.forEach((id) => {
-      meals.push(store.meals.find((meal) => meal.id === id))
+      meals.push(store.meals.find((meal) => meal.id === id));
     });
     return meals;
   }
 
   deliveries() {
-    return store.deliveries.filter((delivery) => delivery.customerId === this.id)
+    return store.deliveries.filter((delivery) => delivery.customerId === this.id);
   }
 
   totalSpent() {
-
+    let total = 0;
+    this.meals().forEach((meal) => {
+      total += meal.price;
+    })
+    return total;
   }
 }
 
