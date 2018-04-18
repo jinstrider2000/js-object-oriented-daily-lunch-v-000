@@ -57,11 +57,11 @@ class Meal {
   }
 
   deliveries() {
-
+    return store.deliveries.filter((delivery) => delivery.mealId === this.id);
   }
 
   customers() {
-
+    
   }
 
   byPrice() {
