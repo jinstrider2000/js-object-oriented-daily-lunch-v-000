@@ -63,8 +63,12 @@ class Meal {
 class Delivery {
   constructor(meal, customer) {
     this.id = ++deliveryIds;
-    this.mealId = meal.id;
-    this.customerId = customer.id;
+    if (meal !== undefined) {
+      this.mealId = meal.id;
+    }
+    if (customer !== undefined) {
+      this.customerId = customer.id;
+    }
     store.deliveries.push(this);
   }
 
@@ -80,7 +84,9 @@ class Delivery {
 class Employer {
   constructor(name) {
     this.id = ++employerIds;
-    this.name = name;
+    if (name !== undefined) {
+      this.name = name;
+    }
     store.employers.push(this);
   }
 
