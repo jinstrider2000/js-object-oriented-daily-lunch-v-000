@@ -13,8 +13,12 @@ let deliveryIds = 0;
 class Customer {
   constructor(name, employer) {
     this.id = ++customerIds;
-    this.name = name;
-    this.employerId = employer.id;
+    if (name !== undefined) {
+      this.name = name;
+    }
+    if (employer !== undefined) {
+      this.employerId = employer.id;
+    }
     store.customers.push(this);
   }
 
@@ -55,7 +59,6 @@ class Meal {
 class Delivery {
   constructor(meal, customer) {
     this.id = ++deliveryIds;
-    console.log("Delivery id is ",this.id);
     this.mealId = meal.id;
     this.customerId = customer.id;
     store.deliveries.push(this);
