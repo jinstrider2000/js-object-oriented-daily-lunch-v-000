@@ -23,7 +23,12 @@ class Customer {
   }
 
   meals() {
-    return store.meals.filter((meal) => meal.customerId === this.id);
+    let meals = [];
+    let mealIdArray = store.deliveries.filter((delivery) => delivery.customerId === this.id).map((customerDelivery) => customerDelivery.mealId);
+    mealIdArray.forEach((id) => {
+      meals.push(store.meals.find((meal) => meal.id === id))
+    });
+    return meals;
   }
 
   deliveries() {
