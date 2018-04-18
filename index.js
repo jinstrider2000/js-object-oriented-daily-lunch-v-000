@@ -24,7 +24,7 @@ class Customer {
 
   meals() {
     let meals = [];
-    let mealIdArray = deliveries().map((customerDelivery) => customerDelivery.mealId);
+    let mealIdArray = this.deliveries().map((customerDelivery) => customerDelivery.mealId);
     mealIdArray.forEach((id) => {
       meals.push(store.meals.find((meal) => meal.id === id))
     });
