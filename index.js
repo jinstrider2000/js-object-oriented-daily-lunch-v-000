@@ -61,7 +61,12 @@ class Meal {
   }
 
   customers() {
-    
+    let customers = [];
+    let customerIdArray = this.deliveries().map((delivery) => delivery.customerId);
+    customerIdArray.forEach((id) => {
+      customers.push(store.customers.find((customer) => customer.id === id));
+    });
+    return customers;
   }
 
   byPrice() {
