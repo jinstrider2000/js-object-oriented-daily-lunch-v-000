@@ -70,7 +70,7 @@ class Meal {
   }
 
   static byPrice() {
-    return store.meals.sort((a,b) => a.price-b.price);
+    return store.meals.sort((a,b) => b.price-a.price);
   }
 }
 
