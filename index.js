@@ -128,7 +128,8 @@ class Employer {
 
   mealTotals() {
     const totals = {};
-    this.deliveries().forEach((delivery) => {
+    const deliveries = this.deliveries();
+    deliveries.forEach((delivery) => {
       if (totals.hasOwnProperty(delivery.mealId) === false) {
         totals[delivery.mealId] = 1;
       }
