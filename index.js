@@ -133,7 +133,7 @@ class Employer {
         totals[delivery.mealId] = 1;
       }
       else {
-        totals[delivery.mealId]++;
+        totals[delivery.mealId] += 1;
       }
     });
     return totals;
