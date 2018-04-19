@@ -123,7 +123,7 @@ class Employer {
     mealIdArray.forEach((id) => {
       meals.push(store.meals.find((meal) => meal.id === id));
     })
-    return meals;
+    return meals.filter((meal, index, self) => self.indexOf(meal) === index);
   }
 
   totalMeals() {
