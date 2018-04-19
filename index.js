@@ -126,7 +126,7 @@ class Employer {
     return meals.filter((meal, index, self) => self.indexOf(meal) === index);
   }
 
-  totalMeals() {
+  mealTotals() {
     const totals = {};
     const deliveries = this.deliveries();
     const meals = this.meals();
