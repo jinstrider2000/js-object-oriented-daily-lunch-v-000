@@ -118,7 +118,12 @@ class Employer {
   }
 
   meals() {
-
+    let meals = [];
+    let mealIdArray = this.deliveries().map((delivery) => delivery.mealId);
+    mealIdArray.forEach((id) => {
+      meals.push(store.meals.find((meal) => meal.id === id));
+    })
+    return meals;
   }
 
   totalMeals() {
