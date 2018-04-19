@@ -110,7 +110,11 @@ class Employer {
 
   deliveries() {
     let deliveries = [];
-    let deliveryIdArray = this.employees();
+    let employeeIdArray = this.employees().map((employee) => employee.id);
+    employeeIdArray.forEach((id) => {
+      deliveries.push(store.deliveries.find((delivery) => delivery.customerId === id));
+    });
+    return deliveries;
   }
 
   meals() {
