@@ -276,6 +276,7 @@ describe('employers', function() {
 
   it('has a deliveries', function() {
     expect(employer.deliveries()).to.include(firstDelivery);
+    expect(employer.deliveries()).to.include(secondDelivery);
     expect(employer.deliveries()).to.not.include(thirdDelivery);
   });
 
