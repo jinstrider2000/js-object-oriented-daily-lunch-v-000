@@ -112,7 +112,10 @@ class Employer {
     const deliveries = [];
     const employeeIdArray = this.employees().map((employee) => employee.id);
     employeeIdArray.forEach((id) => {
-      deliveries.push(store.deliveries.find((delivery) => delivery.customerId === id));
+      let temp = store.deliveries.filter((delivery) => delivery.customerId === id);
+      while (temp.length > 0) {
+        deliveries.push(temp.pop());
+      }
     });
     return deliveries;
   }
