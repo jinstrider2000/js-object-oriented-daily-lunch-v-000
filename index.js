@@ -23,8 +23,8 @@ class Customer {
   }
 
   meals() {
-    let meals = [];
-    let mealIdArray = this.deliveries().map((customerDelivery) => customerDelivery.mealId);
+    const meals = [];
+    const mealIdArray = this.deliveries().map((customerDelivery) => customerDelivery.mealId);
     mealIdArray.forEach((id) => {
       meals.push(store.meals.find((meal) => meal.id === id));
     });
@@ -61,8 +61,8 @@ class Meal {
   }
 
   customers() {
-    let customers = [];
-    let customerIdArray = this.deliveries().map((delivery) => delivery.customerId);
+    const customers = [];
+    const customerIdArray = this.deliveries().map((delivery) => delivery.customerId);
     customerIdArray.forEach((id) => {
       customers.push(store.customers.find((customer) => customer.id === id));
     });
@@ -109,8 +109,8 @@ class Employer {
   }
 
   deliveries() {
-    let deliveries = [];
-    let employeeIdArray = this.employees().map((employee) => employee.id);
+    const deliveries = [];
+    const employeeIdArray = this.employees().map((employee) => employee.id);
     employeeIdArray.forEach((id) => {
       deliveries.push(store.deliveries.find((delivery) => delivery.customerId === id));
     });
@@ -118,15 +118,26 @@ class Employer {
   }
 
   meals() {
-    let meals = [];
-    let mealIdArray = this.deliveries().map((delivery) => delivery.mealId);
+    const meals = [];
+    const mealIdArray = this.deliveries().map((delivery) => delivery.mealId);
     mealIdArray.forEach((id) => {
       meals.push(store.meals.find((meal) => meal.id === id));
-    })
+    });
     return meals.filter((meal, index, self) => self.indexOf(meal) === index);
   }
 
   totalMeals() {
-
+    const totals = {};
+    const deliveries = this.deliveries();
+    const meals = this.meals();
+    deliveries.forEach((delivery) => {
+      if (!totals.hasOwnProperty(delivery.mealId)) {
+        totals[delivery.mealId] = 1;
+      }
+      else {
+        totals[delivery.mealId]++;
+      }
+    });
+    return totals;
   }
 }
