@@ -105,11 +105,12 @@ class Employer {
   }
 
   employees() {
-
+    return store.customers.filter((customer) => customer.employerId === this.id);
   }
 
   deliveries() {
-
+    let deliveries = [];
+    let deliveryIdArray = this.employees();
   }
 
   meals() {
